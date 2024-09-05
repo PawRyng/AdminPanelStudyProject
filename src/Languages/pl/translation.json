@@ -1,4 +1,10 @@
 {
-    "welcome": "Witaj"
+    "welcome": "Witaj",
+    "password": "Hasło",
+    "Invalid_email_format": "Błędnie podany e-mail",
+    "Invalid_password_format": "Hasło musi mieć co najmniej 6 znaków, zawierać co najmniej jedną wielką literę, jedną cyfrę i jeden znak specjalny.",
+    "login": "Zaloguj",
+    "Invalid_password_in_login": "Błędne hasło",
+    "Bad_email_in_login": "Ten e-main nie istnieje"
   }
   

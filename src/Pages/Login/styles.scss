@@ -1,0 +1,151 @@
+@use '../../Style/variables'as *;
+
+.login-page {
+    padding-top: 10vh;
+
+    &__form {
+        padding-inline: 20px;
+        margin-inline : auto;
+        max-width     : 350px;
+
+        h2 {
+            color: $main-color;
+        }
+
+        form {
+            margin-top    : 14px;
+            display       : flex;
+            flex-direction: column;
+            gap           : 13px;
+
+            .form-row {
+                display       : flex;
+                flex-direction: column;
+                gap           : 3px;
+                font-size     : 12px;
+                font-style    : normal;
+                font-weight   : 400;
+                line-height   : normal;
+                position      : relative;
+
+                &:has(input:focus),
+                &:has(input:not(:placeholder-shown)) {
+                    label {
+                        top             : -5px;
+                        font-size       : 10px;
+                        background-color: #FFF;
+                        padding-inline  : 3px;
+                        cursor          : default;
+                    }
+                }
+
+                label {
+                    position  : absolute;
+                    top       : 12px;
+                    left      : 10px;
+                    color     : #76769e;
+                    transition: .2s;
+                    cursor    : text;
+                }
+
+                input {
+                    width        : 100%;
+                    padding      : 10px;
+                    border-radius: 10px;
+                    border       : 2px solid $main-color;
+                }
+
+                .error-message {
+                    color              : $error-color;
+                    margin-inline-start: 10px;
+                    font-size          : 10px;
+                }
+
+                &.error-message,
+                &:has(input:invalid),
+                &:has(.error-message) {
+                    input {
+                        border-color: $error-color;
+                    }
+                }
+            }
+
+            .login-button {
+                margin-block-start: 40px;
+                padding           : 10px;
+                border-radius     : 20px;
+                background-color  : $main-color;
+                border            : none;
+                color             : white;
+                cursor            : pointer;
+            }
+        }
+    }
+
+    &__logo {
+        display         : block;
+        margin-inline   : auto;
+        width           : 130px;
+        margin-block-end: 30px;
+    }
+}
+
+@media (min-width:767px) {
+    .login-page {
+        padding-top: 15vh;
+
+
+        &__form {
+
+            h2 {
+                font-size: 28px;
+            }
+
+            form {
+                margin-top    : 14px;
+                display       : flex;
+                flex-direction: column;
+                gap           : 16px;
+
+                .form-row {
+                    gap      : 5px;
+                    font-size: 16px;
+
+                    &:has(input:focus),
+                    &:has(input:not(:placeholder-shown)) {
+                        label {
+                            top      : -5px;
+                            font-size: 12px;
+                            cursor   : default;
+                        }
+                    }
+
+                    label {
+                        top : 14px;
+                        left: 10px;
+                    }
+
+                    input {
+                        padding  : 12px;
+                        font-size: 16px;
+                    }
+
+                    .error-message {
+                        font-size: 12px;
+                    }
+                }
+
+                .login-button {
+                    margin-block-start: 30px;
+                    font-size         : 16px;
+                }
+            }
+        }
+
+        &__logo {
+            width           : 160px;
+            margin-block-end: 50px;
+        }
+    }
+
+}

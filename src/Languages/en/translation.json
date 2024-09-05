@@ -1,4 +1,10 @@
 {
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "password": "Password",
+    "Invalid_email_format": "Invalid email format",
+    "Invalid_password_format": "Password must be at least 6 characters long, contain at least one uppercase letter, one digit, and one special character.",
+    "login": "Login",
+    "Invalid_password_in_login": "Invalid password",
+    "Bad_email_in_login": "This e-mail not exist"
   }
   

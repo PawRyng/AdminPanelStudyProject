@@ -7,6 +7,7 @@ import NoFound from "../Pages/NoFound/index.tsx";
 // loaders;
 import { loader as loginLoader } from "../Pages/Login/loader.tsx";
 import { loader as dashboardLoader } from "../Pages/Dashboard/loader.tsx";
+import { loader as mainPageLoader } from "../Pages/Main/loader.ts";
 
 
 // actions
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Home/>,
+        loader: mainPageLoader
     },
     {
         path: "/dashboard",

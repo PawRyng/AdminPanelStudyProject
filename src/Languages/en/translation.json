@@ -5,6 +5,8 @@
     "Invalid_password_format": "Password must be at least 6 characters long, contain at least one uppercase letter, one digit, and one special character.",
     "login": "Login",
     "Invalid_password_in_login": "Invalid password",
-    "Bad_email_in_login": "This e-mail not exist"
+    "Bad_email_in_login": "This e-mail not exist",
+    "page_not_found": "We can't seem to find the page you're looking for.",
+    "page_not_found_button": "Back"
   }
   

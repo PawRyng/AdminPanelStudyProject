@@ -71,13 +71,8 @@
             }
 
             .login-button {
+                @include main-button;
                 margin-block-start: 40px;
-                padding           : 10px;
-                border-radius     : 20px;
-                background-color  : $main-color;
-                border            : none;
-                color             : white;
-                cursor            : pointer;
             }
         }
     }

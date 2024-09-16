@@ -1,11 +1,16 @@
 import React from 'react';
 import Navigation from '../../Components/navigation.tsx';
+import { Outlet } from 'react-router';
+
+// style
+import "./styles.scss";
+
 const Dashboard: React.FC = () => {
   return (
-    <div>
+    <section className='dashboard'> 
       <Navigation />
-      Dashboard Page
-    </div>
+      <Outlet />
+    </section>
   );
 };
 

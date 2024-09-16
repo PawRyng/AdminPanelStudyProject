@@ -22,7 +22,25 @@ export const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <Dashboard/>,
-        loader: dashboardLoader
+        loader: dashboardLoader,
+        children: [
+            {
+                path: "/dashboard/",
+                element: "dashboard"
+            },
+            {
+                path: "/dashboard/products",
+                element: "products"
+            },
+            {
+                path: "/dashboard/orders",
+                element: "orders"
+            },
+            {
+                path: "/dashboard/users",
+                element: "users"
+            },
+        ]
     },
     {
         path: "/login",

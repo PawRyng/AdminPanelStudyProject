@@ -57,6 +57,14 @@ export async function action({ request, params }) {
                 // httpOnly: true, // zapytać piotera
                 secure: process.env.NODE_ENV === 'production',
              });
+             Cookies.set('refreshToken', 
+                data.refreshToken,
+                 { 
+                    path: '/',
+                    sameSite: 'Lax',
+                    // httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                 });
 
         return redirect('/dashboard'); 
         

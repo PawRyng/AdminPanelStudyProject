@@ -9,7 +9,9 @@ const Dashboard: React.FC = () => {
   return (
     <section className='dashboard'> 
       <Navigation />
-      <Outlet />
+      <div className="dashboard__content">
+        <Outlet />
+      </div>
     </section>
   );
 };

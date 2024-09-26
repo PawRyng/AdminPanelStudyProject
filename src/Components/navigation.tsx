@@ -29,7 +29,8 @@ const Navigation: React.FC = () => {
     const { t } = useTranslation()
     const navigate = useNavigate()
     const logoutHandler = () => {
-        Cookies.remove('token')
+        Cookies.remove('token');
+        Cookies.remove('refreshToken');
         navigate('/login')
     };
     const location = useLocation();

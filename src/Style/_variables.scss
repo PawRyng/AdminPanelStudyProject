@@ -14,3 +14,135 @@ $max-width  : 400px;
     color           : white;
     cursor          : pointer;
 }
+
+@mixin table-element {
+    box-shadow      : 0px 8px 32px 0px #3326AE14;
+    background-color: #fff;
+    width           : 90%;
+    border-radius   : 9px;
+    padding         : 24px 16px;
+    margin-inline   : auto;
+
+    table {
+        display        : block;
+        width          : 100%;
+        border-spacing : 0;
+        border-collapse: collapse;
+
+        thead {
+            background-color: #F8F8F8;
+            border-radius   : 8px 8px 0 0;
+
+        }
+
+        thead,
+        tbody {
+            display: block;
+            width  : 100%;
+
+            tr {
+                display      : flex;
+                border-bottom: 1px solid #eee;
+                width        : 100%;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                th {
+                    width     : 33%;
+                    padding   : 10px;
+                    text-align: right;
+                    color     : #8E95A9;
+                }
+
+
+                td {
+                    padding      : 16px 10px;
+                    text-align   : right;
+                    width        : 33%;
+                    max-width    : 33%;
+                    white-space  : nowrap;
+                    overflow     : hidden;
+                    text-overflow: ellipsis;
+                    font-size    : 12px;
+                    color        : #555F7E;
+
+                    &.actions {
+                        display        : flex;
+                        justify-content: flex-end;
+                        align-items    : center;
+                        gap            : 10px;
+
+                        button {
+                            background-color: transparent;
+                            border          : none;
+                        }
+
+                        svg {
+                            width : 20px;
+                            height: max-content;
+                        }
+                    }
+                }
+
+                .actions {
+                    width: 150px;
+                }
+            }
+        }
+
+
+    }
+
+    @media (min-width:767px) {
+        width        : 100%;
+        border-radius: 16px;
+        padding      : 32px;
+
+        table {
+
+            thead,
+            tbody {
+                tr {
+                    th {
+                        padding: 21px 16px;
+
+                        &.lp,
+                        &.quantity {
+                            display: block;
+                        }
+                    }
+
+                    td {
+                        font-size     : 14px;
+                        padding-inline: 16px;
+
+                        &.lp,
+                        &.quantity {
+                            display: block;
+                        }
+
+                        &.actions {
+                            svg {
+                                width: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+@mixin page-title {
+    margin-block-end: 14px;
+    color           : #2B2B4C;
+    margin-left     : 20px;
+
+    @media (min-width:767px) {
+        margin-block-end: 32px;
+    }
+}

@@ -20,6 +20,7 @@ export const loader = async () => {
       Cookies.remove('refreshToken');
       return redirect('/login')
     }
-    return error
+    console.error(error)
+    return null
   }
 }

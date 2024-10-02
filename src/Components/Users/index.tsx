@@ -26,7 +26,7 @@ const Users: React.FC = () => {
                 </tr>
             </thead>
             <tbody>
-                { users ? users.map((item, index) => <TabRowComponent key={index} id={item.id} name={item.firstName} modalLabel={t("chcesz usunąć tego użytkownika")} editPath={'/dashboard/users/edit'}/>) : <TabRowComponentSkeleton columnQuantity={2} rowsQuantity={10}/>}
+                { users ? users.map((item, index) => <TabRowComponent key={index} id={item.id} name={item.firstName} modalLabel={t("chcesz usunąć tego użytkownika")} editPath={'/dashboard/users/edit'} deletePath='/dashboard/users/delete'/>) : <TabRowComponentSkeleton columnQuantity={2} rowsQuantity={10}/>}
                 
             </tbody>
         </table>

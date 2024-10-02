@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
-import { redirect } from "react-router";
 
 const api = axios.create({
   baseURL: `${process.env.REACT_APP_BACK_END_HOST}:${process.env.REACT_APP_BACK_END_PORT}`,
@@ -13,7 +12,7 @@ const refreshToken = async (): Promise<string | null> => {
     
     if (!refreshToken) throw new Error("No refresh token found");
 
-    const response: AxiosResponse<{ token: string; refreshToken: string }> = await axios.post(
+    const response: AxiosResponse<{ token: string; refreshToken: string; HttpStatus: number }> = await axios.post(
         `${process.env.REACT_APP_BACK_END_HOST}:${process.env.REACT_APP_BACK_END_PORT}/Authentication/refresh-token`,
         {
           refreshToken,
@@ -25,6 +24,12 @@ const refreshToken = async (): Promise<string | null> => {
         }
       );
 
+      if(response.data.HttpStatus === 0){
+        Cookies.remove('refreshToken');
+        Cookies.remove('token');
+        window.location = "/";
+        return null;
+      }
     Cookies.set('token', 
         response.data.token,
          {
@@ -42,14 +47,14 @@ const refreshToken = async (): Promise<string | null> => {
             secure: process.env.NODE_ENV === 'production',
          });
 
-    return response.data.token;
-  } catch (error) {
+  return response.data.token;
+} catch (error) {
     console.error('Error refreshing token:', error);
     
     Cookies.remove('refreshToken');
     Cookies.remove('token');
-    redirect('/login');
-    return null;
+    window.location = "/";
+    return null
   }
 };
 

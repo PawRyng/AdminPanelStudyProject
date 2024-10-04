@@ -51,7 +51,6 @@ export async function action({ request, params }) {
         Cookies.set('token', 
             data.token,
              { 
-                expires: exp,
                 path: '/',
                 sameSite: 'Lax',
                 // httpOnly: true, // zapytać piotera

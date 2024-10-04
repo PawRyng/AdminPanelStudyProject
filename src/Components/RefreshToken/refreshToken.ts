@@ -76,7 +76,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       }
     }
-
+console.log(error)
     return Promise.reject(error);
   }
 );

@@ -16,12 +16,45 @@
     left     : 50%;
     transform: translateX(-50%);
     z-index  : 999;
+    width    : 90%;
+    max-width: 500px;
+    min-width: unset;
 
     .modal-content {
         background-color: #f8f8f8;
         border          : 1px solid $main-color;
-        padding         : 20px;
+        padding         : 16px;
         border-radius   : 14px;
+
+        @media (min-width:767px) {
+            padding: 25px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        .modal-actions {
+            display        : flex;
+            gap            : 10%;
+            align-items    : center;
+            justify-content: center;
+
+            form {
+                display: contents
+            }
+
+            button {
+                @include main-button;
+                width    : 40%;
+                max-width: 120px;
+            }
+        }
+
     }
 }
 

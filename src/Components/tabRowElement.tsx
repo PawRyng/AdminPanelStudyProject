@@ -15,13 +15,14 @@ interface Params {
     id: number,
     email?: string,
     price?: number,
+    currency?: string,
     quantity?: number,
     modalLabel: string,
     editPath: string,
     deletePath: string,
 }
 
-const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, modalLabel, editPath, deletePath}) => {
+const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, modalLabel, editPath, deletePath, currency}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [t]   = useTranslation();
@@ -33,7 +34,7 @@ const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, mod
             <td className='lp'>{id}</td>
             <td className='name'>{name}</td>
             {email && <td className='email'>{email}</td>}
-            {price && <td className='price'>{price} {t('PLN')}</td>}
+            {price && <td className='price'>{price} {currency}</td>}
             {quantity && <td className='quantity'>{quantity}</td>}
 
             <td className='actions'>
@@ -45,8 +46,8 @@ const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, mod
             <h2>{modalLabel}</h2>
             <p>{name}</p>
             <div className="modal-actions">
-                <Form method="post" action={deletePath}>
-                    <input className='hidden' type="text" defaultValue={id}/>
+                <Form method="post" action={deletePath} onSubmit={()=> setIsModalOpen(false)}>
+                    <input name='id' className='hidden' type="text" defaultValue={id}/>
                     <button type='submit'>Tak</button>
                 </Form>
                 <button onClick={closeModal}>Nie</button>

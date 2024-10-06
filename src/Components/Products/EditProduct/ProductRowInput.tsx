@@ -21,20 +21,25 @@ interface Props {
 
 const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', dataName, errorMessage, setErrorMessage}) => {
     const [nameElement, setNameElement] = useState(name);
-    const [isEditName, setIsEditName] = useState(false)
+    const [isEdited, setIsEdited] = useState(false);
     const [t] = useTranslation();
 
     const oldName:string = name ? name : '';   
 
-    useEffect(() => {
-        if (errorMessage) {
-            setIsEditName(true);
+    const changeValue = ({ newValue, setValueFunction }: ChangeValueProp) => {
+        setValueFunction(newValue); 
+
+        if(newValue !== oldName){
+            setIsEdited(true);
         }
-    }, []);
-    const changeValue = ({ newValue, setValueFunction }: ChangeValueProp) => setValueFunction(newValue)
+        else{
+            setIsEdited(false);
+        }
+    }
 
   return (
     <div className="product-row product-row--name">
+        <label htmlFor={dataName}>{nameField}</label>
         {
             type === 'textarea' ?
                 <textarea 
@@ -42,7 +47,7 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
                     value={nameElement}
                     onChange={(e) => changeValue({ newValue: e.target.value, setValueFunction: setNameElement })}
                     placeholder={nameField}
-                    className={!isEditName && 'disabled'}
+                    id={dataName}
                 ></textarea>
             :
             <input
@@ -51,28 +56,17 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
                 value={nameElement}
                 onChange={(e) => changeValue({ newValue: e.target.value, setValueFunction: setNameElement })}
                 placeholder={nameField}
-                className={!isEditName && 'disabled'}  
                  step={type=='number' && "0.01"}
+                 id={dataName}
             />
         }
         
         <div className="product-row__actions">
             {
-                !isEditName &&
-                <button type="button" onClick={() => setIsEditName(true)}>
-                    <Edit/>
-                </button>
-            }
-            {
-                isEditName && 
-                <>
-                    <button type='submit'>
-                        <Save />
-                    </button>
-                    <button type="button" onClick={()=> { setNameElement(oldName); setIsEditName(false);} }>
+                isEdited && 
+                    <button type="button" onClick={()=> { setNameElement(oldName); setIsEdited(false)} }>
                         <Close/>
                     </button>
-                </>
             }
         </div>
             {

@@ -114,6 +114,8 @@ const EditProduct: React.FC = () => {
                 type='number'
                 errorMessage={(data && data.type === 'vatValue') ? data.message : null} 
             />
+
+            <button className='product-row__button'>{t('save_product')}</button>
         </Form>
     </div>
   </div>

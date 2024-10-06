@@ -11,7 +11,7 @@ interface ChangeValueProp {
     setValueFunction: React.Dispatch<React.SetStateAction<any>>;
 }
 interface Props {
-    name: string,
+    name?: string,
     nameField: string,
     dataName: string,
     type?: string,
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', dataName, errorMessage, setErrorMessage}) => {
-    const [nameElement, setNameElement] = useState(name);
+    const [nameElement, setNameElement] = useState(name ? name : "");
     const [isEdited, setIsEdited] = useState(false);
     const [t] = useTranslation();
 

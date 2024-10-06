@@ -38,9 +38,6 @@
                     @include input-photo;
                 }
 
-                // errors
-
-
                 &__button {
                     @include main-button;
                     display  : block;

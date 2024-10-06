@@ -38,26 +38,12 @@
                     @include input-photo;
                 }
 
-
-
-                &__actions {
-                    position: absolute;
-                    top     : 12px;
-                    right   : 12px;
-
-
-                    button {
-                        background-color: white;
-                        border          : none;
-                        width           : 15px;
-                        cursor          : pointer;
-
-                        svg {
-                            width : 100%;
-                            height: max-content;
-                        }
-                    }
-
+                &__button {
+                    @include main-button;
+                    display  : block;
+                    margin   : 30px auto 0;
+                    padding  : 10px 20px;
+                    font-size: 16px;
                 }
             }
         }

@@ -7,6 +7,8 @@ import "../../../Style/Views/product_add.scss"
 
 import {ReactComponent as Image} from "../../../assets/Icons/image.svg"
 
+import EditProductInputRow from "../EditProduct/ProductRowInput.tsx"
+
 const AddProduct: React.FC = () => {
     const [ t ] = useTranslation();
     const data = useActionData()
@@ -30,71 +32,62 @@ const AddProduct: React.FC = () => {
            <hr />
             {/* product Cattegoy to do lista rozwijana*/}
             <input type="hidden" name="productCategoryId" defaultValue="3bbf881c-7e18-458c-b6e1-3b396ea5a183" />
-            {/* Name */}
-            <div className="product-row">
-                <label htmlFor="name">{t('name')}</label>
-                <input type="text" name="name" id='name' placeholder=' '/>
-                {
-                    data && data.type === "name" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+             {/* Name */}
+           <EditProductInputRow
+                nameField={t('Name')} 
+                dataName='name'
+                errorMessage={(data && data.type === 'name') ? data.message : null}
+           />
 
-            {/* Description */}
-            <div className="product-row">
-                <label htmlFor="description">{t('description')}</label>
-                <textarea name="description" id="description" placeholder=' '></textarea>
-                {
-                    data && data.type === "description" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+             {/* Description */}
+             <EditProductInputRow 
+                nameField={t('Description')} 
+                dataName='description' 
+                type='textarea'
+                errorMessage={(data && data.type === 'description') ? data.message : null}
+            />
+
             {/* Code */}
-            <div className="product-row">
-                <label htmlFor="code">{t('code')}</label>
-                <input type="text" id='code' name="code" placeholder=' '/>
-                {
-                    data && data.type === "code" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('Code')} 
+                dataName='code'
+                errorMessage={(data && data.type === 'code') ? data.message : null}
+            />
+
             {/* Currency to do napisać cutomowy select najlepiej jako komponent*/}
-            <div className="product-row">
-                <label htmlFor="currency">{t('Currency')}</label>
-                <input type="text" name="currency" id="currency" placeholder=' '/>
-                {
-                    data && data.type === "currency" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('Currency')} 
+                dataName='currency' 
+                errorMessage={(data && data.type === 'currency') ? data.message : null}
+            />
+
             {/* Gross Price */}
-            <div className="product-row">
-                <label htmlFor="gross_price">{t('Gross_Price')}</label>
-                <input type="number" name="gross_price" id='gross_price' placeholder=' ' step="0.01"/>
-                {
-                    data && data.type === "gross_price" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('gross_price')} 
+                dataName='gross_price' 
+                type='number'
+                errorMessage={(data && data.type === 'gross_price') ? data.message : null}    
+            />
             {/* Netto Price */}
-            <div className="product-row">
-                <label htmlFor="netto_price">{t('Netto_Price')}</label>
-                <input type="number" name="netto_price" placeholder=' ' id='netto_price' step="0.01"/>
-                {
-                    data && data.type === "netto_price" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('netto_price')} 
+                dataName='netto_price' 
+                type='number'
+                errorMessage={(data && data.type === 'netto_price') ? data.message : null}    
+            />
             {/* vatType */}
-            <div className="product-row">
-                <label htmlFor="vatType">{t('vatType')}</label>
-                <input type="text" name="vatType" placeholder=' ' id='vatType'/>
-                {
-                    data && data.type === "vatType" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('vatType')} 
+                dataName='vatType'
+                errorMessage={(data && data.type === 'vatType') ? data.message : null} 
+            />
             {/* vatValue */}
-            <div className="product-row">
-                <label htmlFor="vatValue">{t('vatValue')}</label>
-                <input type="number" name="vatValue" placeholder=' ' id='vatValue'/>
-                {
-                    data && data.type === "vatValue" ? <p className='product-row__error-message'>{t(data.message)}</p> : null
-                }
-            </div>
+            <EditProductInputRow 
+                nameField={t('vatValue')} 
+                dataName='vatValue' 
+                type='number'
+                errorMessage={(data && data.type === 'vatValue') ? data.message : null} 
+            />
 
             <button className='product-row__button'>{t('add_product')}</button>
         </Form>

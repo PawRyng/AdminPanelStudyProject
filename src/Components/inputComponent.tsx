@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useTranslation } from 'react-i18next';
 
-import {ReactComponent as Edit} from "../../../assets/Icons/edit.svg" 
-import {ReactComponent as Save} from "../../../assets/Icons/save.svg" 
-import {ReactComponent as Close} from "../../../assets/Icons/close.svg" 
+import {ReactComponent as Close} from "../assets/Icons/close.svg" 
 
 
 interface ChangeValueProp {

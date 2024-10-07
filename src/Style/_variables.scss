@@ -201,6 +201,7 @@ $max-width  : 400px;
         padding-inline  : 8px;
         background-color: white;
         transition      : .2s;
+        cursor          : pointer;
     }
 
     &:has(input:not(:placeholder-shown)),

@@ -54,6 +54,11 @@ export async function action({ request, params }: ActionParams): Promise<{ type:
         };
     }
 
+    if(!notEmptyValidation(fields.productCategoryId)) return {
+        type: 'productCategoryId',
+        message: 'field_not_be_empty'
+    }
+
     if (!notEmptyValidation(fields.code)) {
         return {
             type: 'code',

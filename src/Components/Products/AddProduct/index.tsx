@@ -7,7 +7,8 @@ import "../../../Style/Views/product_add.scss"
 
 import {ReactComponent as Image} from "../../../assets/Icons/image.svg"
 
-import EditProductInputRow from "../EditProduct/ProductRowInput.tsx"
+import EditProductInputRow from "../../inputComponent.tsx"
+import SelectComponent from '../../selectComponent.tsx';
 
 const AddProduct: React.FC = () => {
     const [ t ] = useTranslation();
@@ -30,8 +31,6 @@ const AddProduct: React.FC = () => {
             </div>
            
            <hr />
-            {/* product Cattegoy to do lista rozwijana*/}
-            <input type="hidden" name="productCategoryId" defaultValue="3bbf881c-7e18-458c-b6e1-3b396ea5a183" />
              {/* Name */}
            <EditProductInputRow
                 nameField={t('Name')} 
@@ -46,7 +45,11 @@ const AddProduct: React.FC = () => {
                 type='textarea'
                 errorMessage={(data && data.type === 'description') ? data.message : null}
             />
-
+            {/* product Cattegoy */}
+            <SelectComponent 
+            dataName="productCategoryId" 
+            errorMessage={(data && data.type === 'productCategoryId') ? data.message : null}/>
+            
             {/* Code */}
             <EditProductInputRow 
                 nameField={t('Code')} 

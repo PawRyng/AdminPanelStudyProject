@@ -1,3 +1,7 @@
+@use "./variables"as *;
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     padding   : 0;
     margin    : 0;
@@ -18,6 +22,75 @@ body {
     pointer-events: none
 }
 
-// fonts
+.select-element {
+    &__holder {
+        position: relative;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        .active-element {
+            padding        : 8px 14px;
+            border-radius  : 6px;
+            border         : 1px solid #999;
+            cursor         : pointer;
+            display        : flex;
+            justify-content: space-between;
+            transition     : border-radius 0.1s ease 0.2s;
+
+            svg {
+                width     : 20px;
+                height    : max-content;
+                transition: 0.3s;
+            }
+        }
+
+        .list-of-elements {
+            position        : absolute;
+            top             : 100%;
+            max-height      : 0;
+            overflow-x      : hidden;
+            overflow-y      : scroll;
+            transition      : 0.2s;
+            z-index         : 1;
+            background-color: white;
+            width           : 100%;
+            list-style      : none;
+            border          : 1px solid transparent;
+            border-top      : none;
+            border-radius   : 0 0 8px 8px;
+
+            li {
+                padding      : 8px 4px;
+                margin-inline: 10px;
+                border-bottom: 1px solid #999;
+                cursor       : pointer;
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+
+        &--open {
+            .active-element {
+                border-radius: 8px 8px 0 0;
+                transition   : border-radius 0s ease 0s;
+
+                svg {
+                    rotate: 180deg;
+                }
+            }
+
+            .list-of-elements {
+                border-color: #999;
+                max-height  : 250px;
+            }
+
+        }
+    }
+
+    &__error-message {
+        font-size : 12px;
+        text-align: center;
+        margin-top: 5px;
+        color     : $error-color;
+    }
+}

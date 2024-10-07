@@ -5,14 +5,11 @@ import { useLoaderData, Form, useActionData } from "react-router-dom";
 
 import "../../../Style/Views/product_edit.scss"
 
-import EditProductInputRow from './ProductRowInput.tsx';
+import EditProductInputRow from '../../inputComponent.tsx';
+import SelectComponent from '../../selectComponent.tsx';
 
 import {ReactComponent as Image} from "../../../assets/Icons/image.svg"
 
-interface ChangeValueProp {
-    newValue: any;
-    setValueFunction: React.Dispatch<React.SetStateAction<any>>;
-}
 
 const EditProduct: React.FC = () => {
     const [ t ] = useTranslation();
@@ -47,9 +44,7 @@ const EditProduct: React.FC = () => {
             </div>
 
             <hr />
-           
-            {/* product Cattegoy to do lista rozwijana*/}
-            <input type="hidden" name="productCategoryId" defaultValue={product.productCategoryId} />
+
             {/* Name */}
            <EditProductInputRow 
                 name={product.name} 
@@ -66,6 +61,11 @@ const EditProduct: React.FC = () => {
                 type='textarea'
                 errorMessage={(data && data.type === 'description') ? data.message : null}
             />
+
+            {/* product Cattegoy */}
+            <SelectComponent 
+                dataName='productCategoryId' 
+                id={product.productCategoryId} />
 
             {/* Code */}
             <EditProductInputRow 

@@ -68,7 +68,7 @@ export async function action({ request, params }) {
                     'Authorization': `Bearer ${Cookies.get('token')}`,
                   },
             });
-            if(data.HttpStatus === 200){
+            if(data.httpStatus === 200){
                 return redirect('/dashboard/products')
             }
             else if(data.HttpStatus === 0){

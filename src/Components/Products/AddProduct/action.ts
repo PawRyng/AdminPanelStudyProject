@@ -2,6 +2,7 @@ import api from '../../RefreshToken/refreshToken.ts';
 import Cookies from "js-cookie";
 import { vatTypeValidation, priceValidation, currencyValidate, notEmptyValidation } from "../Validation/productValidation.ts";
 import { redirect } from 'react-router';
+import { error } from 'console';
 
 export async function action({ request, params }) {
     const formData = await request.formData();
@@ -19,6 +20,10 @@ export async function action({ request, params }) {
     if(!notEmptyValidation(name)) return {
         type: 'name',
         message: 'field_must_not_be_empty'
+    }
+    if(!notEmptyValidation(productCategoryId)) return {
+        type: 'productCategoryId',
+        message: 'field_not_be_empty'
     }
     if(!notEmptyValidation(code)) return {
         type: 'code',
@@ -46,7 +51,7 @@ export async function action({ request, params }) {
     }
 
     try {
-        const { data } = await api.post(`${process.env.REACT_APP_BACK_END_HOST}:${process.env.REACT_APP_BACK_END_PORT}/Product/product`, 
+        const {data} = await api.post(`${process.env.REACT_APP_BACK_END_HOST}:${process.env.REACT_APP_BACK_END_PORT}/Product/product`, 
             {
                 name,
                 description,
@@ -63,8 +68,18 @@ export async function action({ request, params }) {
                     'Authorization': `Bearer ${Cookies.get('token')}`,
                   },
             });
-        
-        return redirect('/dashboard/products')
+            if(data.HttpStatus === 200){
+                return redirect('/dashboard/products')
+            }
+            else if(data.HttpStatus === 0){
+                return {
+                    type: 'code',
+                    message: data.Message
+                }
+            }
+            else{
+                console.error("Product not added", data)
+            }
     } catch (error) {
         console.error(error)
         return null

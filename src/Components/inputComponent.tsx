@@ -17,7 +17,7 @@ interface Props {
     setErrorMessage?: React.Dispatch<React.SetStateAction<any>>
 }
 
-const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', dataName, errorMessage, setErrorMessage}) => {
+const InputComponent: React.FC<Props> = ({name, nameField, type = 'text', dataName, errorMessage, setErrorMessage}) => {
     const [nameElement, setNameElement] = useState(name ? name : "");
     const [isEdited, setIsEdited] = useState(false);
     const [t] = useTranslation();
@@ -76,4 +76,4 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
   );
 };
 
-export default EditProductInputRow;
+export default InputComponent;

@@ -5,7 +5,7 @@ import { useLoaderData, Form, useActionData } from "react-router-dom";
 
 import "../../../Style/Views/product_edit.scss"
 
-import EditProductInputRow from '../../inputComponent.tsx';
+import ImputComponent from '../../inputComponent.tsx';
 import SelectComponent from '../../selectComponent.tsx';
 
 import {ReactComponent as Image} from "../../../assets/Icons/image.svg"
@@ -46,7 +46,7 @@ const EditProduct: React.FC = () => {
             <hr />
 
             {/* Name */}
-           <EditProductInputRow 
+           <ImputComponent 
                 name={product.name} 
                 nameField={t('Name')} 
                 dataName='name'
@@ -54,7 +54,7 @@ const EditProduct: React.FC = () => {
            />
 
             {/* Description */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.description} 
                 nameField={t('Description')} 
                 dataName='description' 
@@ -68,7 +68,7 @@ const EditProduct: React.FC = () => {
                 id={product.productCategoryId} />
 
             {/* Code */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.code} 
                 nameField={t('Code')} 
                 dataName='code'
@@ -76,7 +76,7 @@ const EditProduct: React.FC = () => {
             />
 
             {/* Currency to do napisać cutomowy select najlepiej jako komponent*/}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.price.currency} 
                 nameField={t('Currency')} 
                 dataName='currency' 
@@ -84,7 +84,7 @@ const EditProduct: React.FC = () => {
             />
 
             {/* Gross Price */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.price.grossPrice} 
                 nameField={t('gross_price')} 
                 dataName='gross_price' 
@@ -92,7 +92,7 @@ const EditProduct: React.FC = () => {
                 errorMessage={(data && data.type === 'gross_price') ? data.message : null}    
             />
             {/* Netto Price */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.price.netPrice} 
                 nameField={t('netto_price')} 
                 dataName='netto_price' 
@@ -100,14 +100,14 @@ const EditProduct: React.FC = () => {
                 errorMessage={(data && data.type === 'netto_price') ? data.message : null}    
             />
             {/* vatType */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.price.vatType} 
                 nameField={t('vatType')} 
                 dataName='vatType'
                 errorMessage={(data && data.type === 'vatType') ? data.message : null} 
             />
             {/* vatValue */}
-            <EditProductInputRow 
+            <ImputComponent 
                 name={product.price.vatValue} 
                 nameField={t('vatValue')} 
                 dataName='vatValue' 

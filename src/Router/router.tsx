@@ -14,6 +14,7 @@ import { loader as mainPageLoader } from "../Pages/Main/loader.ts";
 import { loader as usersLoader } from "../Components/Users/loader.ts";
 import { loader as productsLoading } from "../Components/Products/ShowProducts/LoadProducts.ts";
 import { loader as getProductLoader } from "../Components/Products/EditProduct/loader.ts";
+import { loader as getOrders } from "../Components/Orders/ShowOrders/loader.tsx";
 
 
 // actions
@@ -26,6 +27,7 @@ const Products = React.lazy(() => import("../Components/Products/ShowProducts/in
 const Users = React.lazy(() => import("../Components/Users/index.tsx"));
 const EditProduct = React.lazy(() => import("../Components/Products/EditProduct/index.tsx"));
 const AddProduct = React.lazy(() => import("../Components/Products/AddProduct/index.tsx"));
+const Orders = React.lazy(() => import("../Components/Orders/ShowOrders/index.tsx"));
 
 const Skeleton = () => <div>Ładowanie...</div>;
 
@@ -94,7 +96,23 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/orders",
-                element: "orders"
+                element: (
+                  <Suspense fallback={<Skeleton />}>
+                    <Orders />
+                  </Suspense>
+                ),
+                loader: getOrders,
+                children: [
+                  {
+                    path: ":page",
+                    element: (
+                      <Suspense fallback={<Skeleton />}>
+                        <Orders />
+                      </Suspense>
+                    ),
+                    loader: getOrders,
+                  }                 
+              ]
             },
             {
                 path: "/dashboard/users",

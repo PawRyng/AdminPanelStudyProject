@@ -22,12 +22,14 @@ import { action as loginAction } from "../Pages/Login/loginAction.tsx";
 import { action as deleteProductAction } from "../Components/Products/DeleteAction.tsx";
 import { action as editProductAction } from "../Components/Products/EditProduct/action.ts";
 import { action as addProductAction } from "../Components/Products/AddProduct/action.ts";
+import { action as addCategoryAction } from "../Components/Categories/Add/action.ts";
 
 const Products = React.lazy(() => import("../Components/Products/ShowProducts/index.tsx"));
 const Users = React.lazy(() => import("../Components/Users/index.tsx"));
 const EditProduct = React.lazy(() => import("../Components/Products/EditProduct/index.tsx"));
 const AddProduct = React.lazy(() => import("../Components/Products/AddProduct/index.tsx"));
 const ShowCategories = React.lazy(() => import("../Components/Categories/Show/index.tsx"));
+const AddCategory = React.lazy(() => import("../Components/Categories/Add/index.tsx"));
 
 const Skeleton = () => <div>Ładowanie...</div>;
 
@@ -113,6 +115,20 @@ export const router = createBrowserRouter([
                     loader: getCategories,
                   }                 
               ]
+            },
+            {
+                path: "/dashboard/category",
+                children: [
+                    {
+                      path: "/dashboard/category/add",
+                      element: (
+                        <Suspense fallback={<Skeleton />}>
+                          <AddCategory />
+                        </Suspense>
+                      ),
+                      action: addCategoryAction
+                    }      
+                ]
             },
             {
                 path: "/dashboard/orders",

@@ -1,0 +1,47 @@
+@use "../../variables"as *;
+
+.category {
+
+    &--add,
+    &--edit {
+        width  : 100%;
+        padding: 30px 16px;
+
+        .category {
+            &__category-info {
+                margin-top      : 20px;
+                border-radius   : 9px;
+                padding         : 34px 16px 24px;
+                box-shadow      : 0px 8px 32px 0px #3326AE14;
+                background-color: #fff;
+                max-width       : 450px;
+            }
+
+            input {
+                height : 0px;
+                outline: none;
+            }
+
+
+
+            &-row {
+                @include input-element-with-label;
+
+                &__button {
+                    @include main-button;
+                    display  : block;
+                    margin   : 30px auto 0;
+                    padding  : 10px 20px;
+                    font-size: 16px;
+                }
+
+                &__error-message {
+                    text-align: center;
+                    font-size : 14px;
+                    color     : $error-color;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

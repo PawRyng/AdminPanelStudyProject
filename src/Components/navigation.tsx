@@ -17,6 +17,7 @@ import {ReactComponent as UsersIcon} from "../assets/Icons/user.svg"
 import {ReactComponent as LogoutIcon} from "../assets/Icons/logout.svg"
 import {ReactComponent as HamburgerIcon} from "../assets/Icons/hamburger.svg"
 import {ReactComponent as CloseIcon} from "../assets/Icons/close.svg"
+import {ReactComponent as Categories} from "../assets/Icons/categories.svg"
 
 
 const Navigation: React.FC = () => {
@@ -24,7 +25,8 @@ const Navigation: React.FC = () => {
       products: '/dashboard/products',
       orders: '/dashboard/orders',
       users: '/dashboard/users',
-      dashboard: '/dashboard'
+      dashboard: '/dashboard',
+      categories: '/dashboard/categories',
     }
     const { t } = useTranslation()
     const navigate = useNavigate()
@@ -49,18 +51,27 @@ const Navigation: React.FC = () => {
         <button className='nav__item nav__item--close' onClick={closeNav}>
           <CloseIcon />
         </button>
+        {/* Dashboard */}
         <Link className={`nav__item ${location.pathname === pathLinks.dashboard ? 'nav__item--active' : ''}`} to={pathLinks.dashboard} onClick={closeNav}>
           <HomeIcon />
         </Link>
+        {/* Products */}
         <Link className={`nav__item ${location.pathname === pathLinks.products ? 'nav__item--active' : ''}`}  to={pathLinks.products} onClick={closeNav}>
           <ProductsIcon />
         </Link>
+        {/* Categories */}
+        <Link className={`nav__item ${location.pathname === pathLinks.categories ? 'nav__item--active' : ''}`}  to={pathLinks.categories} onClick={closeNav}>
+          <Categories />
+        </Link>
+        {/* Orders */}
         <Link className={`nav__item ${location.pathname === pathLinks.orders ? 'nav__item--active' : ''}`}  to={pathLinks.orders} onClick={closeNav}>
           <OrdersIcon />
         </Link>
+        {/* Users */}
         <Link className={`nav__item ${location.pathname === pathLinks.users ? 'nav__item--active' : ''}`}  to={pathLinks.users} onClick={closeNav}>
           <UsersIcon />
         </Link>
+        {/* Logout */}
         <button className='nav__item nav__item--logout' onClick={logoutHandler}>
           <LogoutIcon />
         </button> 

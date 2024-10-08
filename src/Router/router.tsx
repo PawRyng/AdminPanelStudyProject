@@ -15,6 +15,7 @@ import { loader as usersLoader } from "../Components/Users/loader.ts";
 import { loader as productsLoading } from "../Components/Products/ShowProducts/LoadProducts.ts";
 import { loader as getProductLoader } from "../Components/Products/EditProduct/loader.ts";
 import { loader as getCategories } from "../Components/Categories/Show/loader.ts";
+import { loader as getCategoryLoader } from "../Components/Categories/Edit/loader.ts";
 
 
 // actions
@@ -23,6 +24,8 @@ import { action as deleteProductAction } from "../Components/Products/DeleteActi
 import { action as editProductAction } from "../Components/Products/EditProduct/action.ts";
 import { action as addProductAction } from "../Components/Products/AddProduct/action.ts";
 import { action as addCategoryAction } from "../Components/Categories/Add/action.ts";
+import { action as editCategoryAction } from "../Components/Categories/Edit/action.ts";
+import { action as deleteCategoryAction } from "../Components/Categories/Delete/action.ts";
 
 const Products = React.lazy(() => import("../Components/Products/ShowProducts/index.tsx"));
 const Users = React.lazy(() => import("../Components/Users/index.tsx"));
@@ -30,6 +33,7 @@ const EditProduct = React.lazy(() => import("../Components/Products/EditProduct/
 const AddProduct = React.lazy(() => import("../Components/Products/AddProduct/index.tsx"));
 const ShowCategories = React.lazy(() => import("../Components/Categories/Show/index.tsx"));
 const AddCategory = React.lazy(() => import("../Components/Categories/Add/index.tsx"));
+const EditCategory = React.lazy(() => import("../Components/Categories/Edit/index.tsx"));
 
 const Skeleton = () => <div>Ładowanie...</div>;
 
@@ -127,7 +131,21 @@ export const router = createBrowserRouter([
                         </Suspense>
                       ),
                       action: addCategoryAction
-                    }      
+                    },
+                    {
+                      path: "/dashboard/category/edit/:id",
+                      element: (
+                        <Suspense fallback={<Skeleton />}>
+                          <EditCategory />
+                        </Suspense>
+                      ),
+                      loader: getCategoryLoader,
+                      action: editCategoryAction
+                    },     
+                    {
+                      path: "/dashboard/category/delete",
+                      action: deleteCategoryAction
+                    },     
                 ]
             },
             {

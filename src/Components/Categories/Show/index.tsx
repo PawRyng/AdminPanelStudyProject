@@ -36,8 +36,8 @@ const Categories: React.FC = () => {
             id={item.id} 
             name={item.name} 
             modalLabel={t("delete_category_message")} 
-            editPath={'/dashboard/categories/edit'} 
-            deletePath={'/dashboard/categories/delete'} 
+            editPath={'/dashboard/category/edit'} 
+            deletePath={'/dashboard/category/delete'} 
             />) : <TabRowComponentSkeleton columnQuantity={1} rowsQuantity={10}/>}
             </tbody>
         </table>

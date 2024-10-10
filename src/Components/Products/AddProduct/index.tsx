@@ -7,7 +7,7 @@ import "../../../Style/Views/product_add.scss"
 
 import {ReactComponent as Image} from "../../../assets/Icons/image.svg"
 
-import EditProductInputRow from "../../inputComponent.tsx"
+import InputComponent from "../../inputComponent.tsx"
 import SelectComponent from '../../selectComponent.tsx';
 
 const AddProduct: React.FC = () => {
@@ -32,14 +32,14 @@ const AddProduct: React.FC = () => {
            
            <hr />
              {/* Name */}
-           <EditProductInputRow
+           <InputComponent
                 nameField={t('Name')} 
                 dataName='name'
                 errorMessage={(data && data.type === 'name') ? data.message : null}
            />
 
              {/* Description */}
-             <EditProductInputRow 
+             <InputComponent 
                 nameField={t('Description')} 
                 dataName='description' 
                 type='textarea'
@@ -51,41 +51,41 @@ const AddProduct: React.FC = () => {
             errorMessage={(data && data.type === 'productCategoryId') ? data.message : null}/>
             
             {/* Code */}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('Code')} 
                 dataName='code'
                 errorMessage={(data && data.type === 'code') ? data.message : null}
             />
 
             {/* Currency to do napisać cutomowy select najlepiej jako komponent*/}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('Currency')} 
                 dataName='currency' 
                 errorMessage={(data && data.type === 'currency') ? data.message : null}
             />
 
             {/* Gross Price */}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('gross_price')} 
                 dataName='gross_price' 
                 type='number'
                 errorMessage={(data && data.type === 'gross_price') ? data.message : null}    
             />
             {/* Netto Price */}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('netto_price')} 
                 dataName='netto_price' 
                 type='number'
                 errorMessage={(data && data.type === 'netto_price') ? data.message : null}    
             />
             {/* vatType */}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('vatType')} 
                 dataName='vatType'
                 errorMessage={(data && data.type === 'vatType') ? data.message : null} 
             />
             {/* vatValue */}
-            <EditProductInputRow 
+            <InputComponent 
                 nameField={t('vatValue')} 
                 dataName='vatValue' 
                 type='number'

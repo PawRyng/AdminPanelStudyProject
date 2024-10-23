@@ -11,13 +11,14 @@ interface ChangeValueProp {
 interface Props {
     name?: string,
     nameField: string,
+    className?: string,
     dataName: string,
     type?: string,
     errorMessage?: string | null,
     setErrorMessage?: React.Dispatch<React.SetStateAction<any>>
 }
 
-const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', dataName, errorMessage, setErrorMessage}) => {
+const EditProductInputRow: React.FC<Props> = ({name, nameField, className="product-row", type = 'text', dataName, errorMessage, setErrorMessage}) => {
     const [nameElement, setNameElement] = useState(name ? name : "");
     const [isEdited, setIsEdited] = useState(false);
     const [t] = useTranslation();
@@ -36,7 +37,7 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
     }
 
   return (
-    <div className="product-row product-row--name">
+    <div className={`${className} ${className}--name`}>
         <label htmlFor={dataName}>{nameField}</label>
         {
             type === 'textarea' ?
@@ -59,7 +60,7 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
             />
         }
         
-        <div className="product-row__actions">
+        <div className={`${className}__actions`}>
             {
                 isEdited && 
                     <button type="button" onClick={()=> { setNameElement(oldName); setIsEdited(false)} }>
@@ -69,7 +70,7 @@ const EditProductInputRow: React.FC<Props> = ({name, nameField, type = 'text', d
         </div>
             {
                 errorMessage &&
-                <p className='product-row__error-message'>{t(errorMessage)}</p>
+                <p className={`${className}__error-message`}>{t(errorMessage)}</p>
             }
     </div>
   

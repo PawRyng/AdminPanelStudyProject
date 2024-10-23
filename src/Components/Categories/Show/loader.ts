@@ -11,13 +11,9 @@ export const loader = async ({ params }) => {
     const { page } = params;
 
     try {
-      const response = await api.post(`/ProductCategory/product-categories`, {
-          page: page ? page : 1
-        },
+      const response = await api.post(`/ProductCategory/product-categories`, 
         {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
+          page: page ? page : 1
         }
       );
       return response.data.data.data;

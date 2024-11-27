@@ -23,7 +23,7 @@ export async function action({ request, params }) {
   const vatValue = formData.get("vatValue");
   const image = formData.get("image") as File | null;
 
-  let base64Image: string | undefined;
+  let base64Image: string | null;
 
   if (image && image instanceof Blob) {
     base64Image = await convertImageToBase64(image);

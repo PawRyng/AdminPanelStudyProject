@@ -18,8 +18,8 @@ interface Params {
     currency?: string,
     quantity?: number,
     modalLabel: string,
-    editPath: string,
-    deletePath: string,
+    editPath?: string,
+    deletePath?: string,
 }
 
 const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, modalLabel, editPath, deletePath, currency}) => {
@@ -38,21 +38,31 @@ const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, mod
             {quantity && <td className='quantity'>{quantity}</td>}
 
             <td className='actions'>
-                <Link to={`${editPath}/${id}`}><Edit/></Link>
-                <button onClick={openModal}><Trash/></button>
+                {
+                    editPath && <Link to={`${editPath}/${id}`}><Edit/></Link>
+                }
+
+                {
+                    deletePath && <button onClick={openModal}><Trash/></button>
+                }
+                
+                
             </td>
         </tr>
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-            <h2>{modalLabel}</h2>
-            <p>{name}</p>
-            <div className="modal-actions">
-                <Form method="post" action={deletePath} onSubmit={()=> setIsModalOpen(false)}>
-                    <input name='id' className='hidden' type="text" defaultValue={id}/>
-                    <button type='submit'>Tak</button>
-                </Form>
-                <button onClick={closeModal}>Nie</button>
-            </div>
-        </Modal>
+        {
+            deletePath &&
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <h2>{modalLabel}</h2>
+                <p>{name}</p>
+                <div className="modal-actions">
+                    <Form method="post" action={deletePath} onSubmit={()=> setIsModalOpen(false)}>
+                        <input name='id' className='hidden' type="text" defaultValue={id}/>
+                        <button type='submit'>Tak</button>
+                    </Form>
+                    <button onClick={closeModal}>Nie</button>
+                </div>
+            </Modal>
+        }
     </>
   );
 };

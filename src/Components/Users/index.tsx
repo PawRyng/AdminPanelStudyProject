@@ -22,11 +22,11 @@ const Users: React.FC = () => {
                 <tr>
                     <th className='lp'>{t('ID')}</th>
                     <th className='name'>{t('name')}</th>
-                    <th className='actions'>{t('actions')}</th>
+                    <th className='actions'></th>
                 </tr>
             </thead>
             <tbody>
-                { users ? users.map((item, index) => <TabRowComponent key={index} id={item.id} name={item.firstName} modalLabel={t("chcesz usunąć tego użytkownika")} editPath={'/dashboard/users/edit'} deletePath='/dashboard/users/delete'/>) : <TabRowComponentSkeleton columnQuantity={2} rowsQuantity={10}/>}
+                { users ? users.map((item, index) => <TabRowComponent key={index} id={item.id} name={item.firstName} modalLabel={t("chcesz usunąć tego użytkownika")} />) : <TabRowComponentSkeleton columnQuantity={2} rowsQuantity={10}/>}
                 
             </tbody>
         </table>

@@ -26,11 +26,11 @@ const EditProduct: React.FC = () => {
         <Form method="post" action={`/dashboard/product/edit/${product.id}`} encType="multipart/form-data">
             <div className="product-row product-row--image">
                 {
-                product.productPhotoBlob ?
+                product.productPhotoBase64 ?
                 <div className="image-holder">
                     <input type="file" id="image" name="image" accept="image/*" />
                     <label htmlFor="image">
-                        <img src={`data:image/png;base64,${product.productPhotoBlob}`} alt={product.name} />
+                        <img src={`data:image/png;base64,${product.productPhotoBase64}`} alt={product.name} />
                     </label>
                 </div>
                  :

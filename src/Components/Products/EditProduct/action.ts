@@ -39,13 +39,11 @@ export async function action({ request, params }: ActionParams): Promise<{ type:
         vatValue: formData.get('vatValue')
     };
 
-    // Konwersja obrazu do Base64, jeśli jest przesłany
     let base64Image: string | undefined;
     if (fields.image && fields.image instanceof Blob) {
         base64Image = await convertImageToBase64(fields.image);
+        console.log(base64Image)
     }
-    console.log(base64Image)
-
     // Walidacja danych z formularza
     if (!notEmptyValidation(fields.name)) {
         return {
@@ -102,6 +100,7 @@ export async function action({ request, params }: ActionParams): Promise<{ type:
     }
 
     try {
+        console.log(base64Image)
         const { data } = await api.put(
             `${process.env.REACT_APP_BACK_END_HOST}:${process.env.REACT_APP_BACK_END_PORT}/Product/product`, 
             {
@@ -115,7 +114,7 @@ export async function action({ request, params }: ActionParams): Promise<{ type:
                 vatValue: fields.vatValue,
                 vatType: fields.vatType,
                 currency: fields.currency,
-                // productPhotoBlob: base64Image 
+                productPhotoBase64: base64Image 
             },
             {
                 headers: {
@@ -123,6 +122,7 @@ export async function action({ request, params }: ActionParams): Promise<{ type:
                 }
             }
         );
+        console.log(data)
 
         return null;
     } catch (error) {

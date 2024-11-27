@@ -30,7 +30,7 @@ const EditProduct: React.FC = () => {
                 <div className="image-holder">
                     <input type="file" id="image" name="image" accept="image/*" />
                     <label htmlFor="image">
-                        <img src={product.productPhotoBlob} alt={product.name} />
+                        <img src={`data:image/png;base64,${product.productPhotoBlob}`} alt={product.name} />
                     </label>
                 </div>
                  :

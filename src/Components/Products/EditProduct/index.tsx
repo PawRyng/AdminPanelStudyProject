@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData, Form, useActionData } from "react-router-dom";
+import { useLoaderData, Form, useActionData, useFetcher } from "react-router-dom";
 
 
 import "../../../Style/Views/product_edit.scss"
@@ -15,7 +15,11 @@ const EditProduct: React.FC = () => {
     const [ t ] = useTranslation();
     const product = useLoaderData();   
     const data = useActionData()
-    
+    let fetcher = useFetcher();
+    useEffect(()=>{
+        
+        console.log(fetcher)
+    },[fetcher]);
 
   return (
   <div className="product product--edit">

@@ -69,8 +69,11 @@ export async function action({ request, params }) {
         
     } catch (error) {
         if (error.response && error.response.status === 404) {
-            result.server = "Bad_email_in_login";
-        } else {
+            result.email = "Bad_email_in_login";
+        } 
+        else if(error.response && error.response.status === 401){
+            result.password = "Invalid_password"
+        }else {
             result.server = "Server_error";
         }
         console.error(error)

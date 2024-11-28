@@ -16,6 +16,8 @@ import { loader as productsLoading } from "../Components/Products/ShowProducts/L
 import { loader as getProductLoader } from "../Components/Products/EditProduct/loader.ts";
 import { loader as getCategories } from "../Components/Categories/Show/loader.ts";
 import { loader as getCategoryLoader } from "../Components/Categories/Edit/loader.ts";
+import { loader as getOrders } from "../Components/Orders/LoadOrders.ts";
+import { loader as getOrder } from "../Components/Order/LoadOrder.ts";
 
 
 // actions
@@ -34,6 +36,8 @@ const AddProduct = React.lazy(() => import("../Components/Products/AddProduct/in
 const ShowCategories = React.lazy(() => import("../Components/Categories/Show/index.tsx"));
 const AddCategory = React.lazy(() => import("../Components/Categories/Add/index.tsx"));
 const EditCategory = React.lazy(() => import("../Components/Categories/Edit/index.tsx"));
+const Orders = React.lazy(() => import("../Components/Orders/index.tsx"));
+const Order = React.lazy(() => import("../Components/Order/index.tsx"));
 
 const Skeleton = () => <div>Ładowanie...</div>;
 
@@ -149,8 +153,23 @@ export const router = createBrowserRouter([
                 ]
             },
             {
+                path: "/dashboard/order",
+                children: [
+                    {
+                      path: "/dashboard/order/edit/:id",
+                      element: (
+                        <Suspense fallback={<Skeleton />}>
+                          <Order />
+                        </Suspense>
+                      ),
+                      loader: getOrder
+                    }
+                ]
+            },
+            {
                 path: "/dashboard/orders",
-                element: "orders"
+                element: <Orders/>,
+                loader: getOrders,
             },
             {
                 path: "/dashboard/users",

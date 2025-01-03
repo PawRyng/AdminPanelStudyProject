@@ -90,7 +90,7 @@ const EditProduct: React.FC = () => {
             {/* Gross Price */}
             <ImputComponent 
                 name={product.price.grossPrice} 
-                nameField={t('gross_price')} 
+                nameField={t('Gross_Price')} 
                 dataName='gross_price' 
                 type='number'
                 errorMessage={(data && data.type === 'gross_price') ? data.message : null}    
@@ -98,7 +98,7 @@ const EditProduct: React.FC = () => {
             {/* Netto Price */}
             <ImputComponent 
                 name={product.price.netPrice} 
-                nameField={t('netto_price')} 
+                nameField={t('Netto_Price')} 
                 dataName='netto_price' 
                 type='number'
                 errorMessage={(data && data.type === 'netto_price') ? data.message : null}    
@@ -106,14 +106,14 @@ const EditProduct: React.FC = () => {
             {/* vatType */}
             <ImputComponent 
                 name={product.price.vatType} 
-                nameField={t('vatType')} 
+                nameField={t('Vat_type')} 
                 dataName='vatType'
                 errorMessage={(data && data.type === 'vatType') ? data.message : null} 
             />
             {/* vatValue */}
             <ImputComponent 
                 name={product.price.vatValue} 
-                nameField={t('vatValue')} 
+                nameField={t('Vat_Value')} 
                 dataName='vatValue' 
                 type='number'
                 errorMessage={(data && data.type === 'vatValue') ? data.message : null} 

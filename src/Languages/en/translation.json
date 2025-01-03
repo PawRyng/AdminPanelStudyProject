@@ -7,6 +7,23 @@
     "Invalid_password_in_login": "Invalid password",
     "Bad_email_in_login": "This e-mail not exist",
     "page_not_found": "We can't seem to find the page you're looking for.",
-    "page_not_found_button": "Back"
+    "page_not_found_button": "Back",
+    "save_product": "Save",
+    "chcesz usunąć ten produkt": "You want to delete this product?",
+    "category_name": "Category Name",
+    "save_category": "Save",
+    "Last_name": "Last name",
+    "Postal_Code": "Postalcode",
+    "Building_No": "Building No.",
+    "Apartment_No": "Apartment No.",
+    "User_data": "User data",
+    "User_address": "User address",
+    "Cart_price": "Cart price",
+    "Gross_Price": "Gross Price",
+    "Netto_Price": "Netto Price",
+    "Vat_Value": "Vat Value",
+    "chooce_category": "Choose a category",
+    "add_product": "Save",
+    "Vat_type": "Vat type"
   }
   

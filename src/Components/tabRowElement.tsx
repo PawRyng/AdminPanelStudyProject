@@ -57,9 +57,9 @@ const TabRowComponent: React.FC<Params> = ({name,id, price, quantity, email, mod
                 <div className="modal-actions">
                     <Form method="post" action={deletePath} onSubmit={()=> setIsModalOpen(false)}>
                         <input name='id' className='hidden' type="text" defaultValue={id}/>
-                        <button type='submit'>Tak</button>
+                        <button type='submit'>{t("Yes")}</button>
                     </Form>
-                    <button onClick={closeModal}>Nie</button>
+                    <button onClick={closeModal}>{t("No")}</button>
                 </div>
             </Modal>
         }

@@ -66,27 +66,27 @@ const AddProduct: React.FC = () => {
 
             {/* Gross Price */}
             <InputComponent 
-                nameField={t('gross_price')} 
+                nameField={t('Gross_Price')} 
                 dataName='gross_price' 
                 type='number'
                 errorMessage={(data && data.type === 'gross_price') ? data.message : null}    
             />
             {/* Netto Price */}
             <InputComponent 
-                nameField={t('netto_price')} 
+                nameField={t('Netto_Price')} 
                 dataName='netto_price' 
                 type='number'
                 errorMessage={(data && data.type === 'netto_price') ? data.message : null}    
             />
             {/* vatType */}
             <InputComponent 
-                nameField={t('vatType')} 
+                nameField={t('Vat_type')} 
                 dataName='vatType'
                 errorMessage={(data && data.type === 'vatType') ? data.message : null} 
             />
             {/* vatValue */}
             <InputComponent 
-                nameField={t('vatValue')} 
+                nameField={t('Vat_Value')} 
                 dataName='vatValue' 
                 type='number'
                 errorMessage={(data && data.type === 'vatValue') ? data.message : null} 

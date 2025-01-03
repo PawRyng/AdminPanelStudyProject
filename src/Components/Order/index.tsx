@@ -89,7 +89,6 @@ const Order: React.FC = () => {
                             item.price.currency
                         }
                     </span>
-                    <Link className='product__button' to="/dashboard"><ProductsIcon/></Link>
                 </div>
                 )
                 }

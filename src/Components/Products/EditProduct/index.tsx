@@ -17,7 +17,6 @@ const EditProduct: React.FC = () => {
     const data = useActionData()
     let fetcher = useFetcher();
     useEffect(()=>{
-        
         console.log(fetcher)
     },[fetcher]);
 

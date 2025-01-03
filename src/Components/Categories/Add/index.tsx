@@ -9,7 +9,6 @@ import InputComponent from '../../inputComponent.tsx';
 const Categories: React.FC = () => {
     const [ t ] = useTranslation();
     const data = useActionData();
-    console.log(data)
     
   return (
   <div className="category category--add">

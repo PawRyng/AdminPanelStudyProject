@@ -1,0 +1,7 @@
+.dashboard__content {
+    &:has(.home) {
+        align-items        : center;
+        padding-block-start: 25vh;
+        font-size          : 22px;
+    }
+}

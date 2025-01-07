@@ -29,6 +29,7 @@ import { action as addCategoryAction } from "../Components/Categories/Add/action
 import { action as editCategoryAction } from "../Components/Categories/Edit/action.ts";
 import { action as deleteCategoryAction } from "../Components/Categories/Delete/action.ts";
 
+const HomeView = React.lazy(() => import("../Components/Home/index.tsx"));
 const Products = React.lazy(() => import("../Components/Products/ShowProducts/index.tsx"));
 const Users = React.lazy(() => import("../Components/Users/index.tsx"));
 const EditProduct = React.lazy(() => import("../Components/Products/EditProduct/index.tsx"));
@@ -54,7 +55,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/",
-                element: "dashboard"
+                element: <HomeView />
             },
             {
                 path: "/dashboard/products",
